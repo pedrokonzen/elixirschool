@@ -307,5 +307,38 @@ end
 ```
 
 - Tente incluir alguns exemplos de código em sua documentação, isto também permite gerar testes automáticos a partir dos exemplos de código encontrados em um módulo, função ou macro com [Exunit.DocTest] []. A fim de fazer isso, é preciso invocar o macro `doctest/1` de seu caso de teste e escrever os seus exemplos de acordo com algumas orientações, que são detalhados na [documentação oficial][ExUnit.DocTest].
+_______________________________________________
+
+
+defmodule MinhaCalculadora do
+  @moduledoc """
+  Módulo contendo funções de calculadora.
+  """
+
+  @doc """
+  Função que realiza a soma de dois números inteiros.
+
+  ## Exemplos
+
+      iex> MinhaCalculadora.soma(2, 3)
+      5
+
+      iex> MinhaCalculadora.soma(-1, 10)
+      9
+  """
+  def soma(a, b) do
+    a + b
+  end
+end
+
+defmodule MinhaCalculadoraTest do
+  use ExUnit.Case
+  doctest MinhaCalculadora  # Invoca o macro doctest/1
+
+<!--   # demais testes aqui -->
+end
+
+
+
 
 [ExUnit.DocTest]: https://hexdocs.pm/ex_unit/ExUnit.DocTest.html
